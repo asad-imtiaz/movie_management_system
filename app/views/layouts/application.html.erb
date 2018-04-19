@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MovieManagementSystem</title>
+  <title>MoviPedia</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="container">
 
-<%= yield %>
-
+  <div style= "margin-top: 80px">
+    <% if flash.any? %>
+      <div class="flash_messages">
+        <p class="bg bg-danger"><%= flash[:error] %></p>
+        <p class="bg bg-success"><%= flash[:success] %></p>
+        <p class="notice bg bg-success""><%= notice %></p>
+        <p class="bg bg-danger"><%= alert %></p>
+      </div>
+    <% end %>
+    <%= yield %>
+  </div>
 </body>
 </html>
