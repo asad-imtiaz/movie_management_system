@@ -1,17 +1,16 @@
-<div class="well">
-  <div class="title">
-    <p><%= movie.title %></p> 
-    <p>Rating: <%= movie.rating %></p>
+<div>
+  <%= content_tag :h3, movie.title %>
+  <p>
+    <b>Rating: </b><%= movie.rating %>
+  </p>
+  <div>
+    <%= movie.description.html_safe %>
   </div>
   <div>
-    Description: <br/>
-    <%= movie.description %>
-  </div>
-  <div>
-    <% if user_signed_in? and current_user.admin? %>
+    <% if user_signed_in? && current_user.admin? %>
       <%= link_to "Edit", edit_admin_movie_path(movie) %>
       <%= link_to "Delete", admin_movie_path(movie), method: :delete,
         data: {confirm: "Are you sure?"} %>
-    <%end%>
+    <% end %>
   </div>
 </div>

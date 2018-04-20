@@ -18,6 +18,9 @@
       </div>
     <% end %>
     <%= yield %>
+    <script type="text/javascript">
+      <%= yield :javascript %>
+    </script>
   </div>
 </body>
 </html>

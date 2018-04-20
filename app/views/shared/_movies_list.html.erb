@@ -1,5 +1,2 @@
-<% if user_signed_in? && current_user.admin? %>
-  <%= link_to "add movie", new_admin_movie_path %>
-<% end %>
 <h2>Movies List</h2>
 <%= render partial: 'shared/movie', collection: @movies %>
