@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :movies do
       member do
-        get :remove_poster
+        post :remove_poster
       end
     end
     resources :actors

@@ -5,7 +5,7 @@ class Admin::MoviesController < ApplicationController
   before_action :set_actors, only: [:new, :edit]
 
   def index
-    @movies = Movie.all
+    @movies = Movie.all.page(params[:page])
   end
 
   def new
