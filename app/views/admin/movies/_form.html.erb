@@ -38,6 +38,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.label "Select Actors", class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.collection_select :actor_ids, @actors, :id, :name, {}, multiple: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.submit "Submit", class: "btn btn-reverse col-md-offset-2 col-md-1" %>
   </div>
 <% end %>

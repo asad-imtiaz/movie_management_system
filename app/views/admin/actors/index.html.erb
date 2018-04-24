@@ -1,0 +1,12 @@
+<%= link_to "Add Actor", new_admin_actor_path, class: "btn btn-default" %>
+<h2> Actors' List</h2>
+<hr/>
+<ul>
+  <% @actors.each do |a| %>
+    <li>
+      <%= link_to a.name, admin_actor_path(a) %> | <%= link_to "Edit", edit_admin_actor_path(a) %> |
+      <%= link_to "Delete", admin_actor_path(a), method: :delete,
+          data: {confirm: "Are you sure?"} %>
+    </li>
+  <% end %>
+</ul>

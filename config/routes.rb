@@ -7,14 +7,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :movies do
       member do
-        get :manage_cast
-        patch :manage_cast, to: 'movies#update_cast'
         get :remove_poster
       end
     end
+    resources :actors
     resources :users , only: [:index, :show]
   end
 
+  resources :actors, only: [:index, :show]
   resources :movies, only: [:index, :show]
 
 end

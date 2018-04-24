@@ -15,6 +15,12 @@
     </div>
   </div>
 </div>
+<h3>Cast</h3>
+<% movie.actors.each do |actor| %>
+  <div class="row">
+    <%= link_to actor.name, actor_show(actor) %>
+  </div>
+<% end %>
 <div class="row">
   <h3>Trailer</h3>
 </div>

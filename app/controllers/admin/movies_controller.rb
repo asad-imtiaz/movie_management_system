@@ -2,6 +2,7 @@ class Admin::MoviesController < ApplicationController
 
   before_action :check_user
   before_action :find_movie , only: [:edit, :edit_poster, :update_poster, :show, :destroy, :update, :remove_poster]
+  before_action :set_actors, only: [:new, :edit]
 
   def index
     @movies = Movie.all
@@ -54,7 +55,7 @@ class Admin::MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :description,:poster, :release_date, :trailer_link)
+    params.require(:movie).permit(:title, :description,:poster, :release_date, :trailer_link, actor_ids: [])
   end
 
   def find_movie
@@ -63,14 +64,6 @@ class Admin::MoviesController < ApplicationController
 
   def set_actors
     @actors = Actor.select(:id, :name)
-  end
-
-  def user_admin?
-    user_signed_in? && current_user.admin?
-  end
-
-  def check_user
-    return redirect_to root_url, alert: "Must be logged in as Admin" unless user_admin?
   end
 
 end
