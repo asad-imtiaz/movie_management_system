@@ -1,0 +1,18 @@
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>DOB</th>
+    <th>Gender</th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %> <%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.date_of_birth %></td>
+      <td><%= user.gender.to_s.humanize %></td>
+      <td><%= display_admin(user) %></td>
+    </tr>
+  <% end %>
+</table>

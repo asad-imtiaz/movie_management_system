@@ -1,7 +1,12 @@
 class MoviesController < ApplicationController
 
+   before_action :find_movie, only: :show
+
   def index
-    @movies= Movie.all
+    @movies = Movie.all
+  end
+
+  def show
   end
 
   private

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag movie.poster.url(:poster), class: "img" %>
+  </div>
+  <div class="col-md-9">
+    <%= content_tag :h2, movie.title %>
+    <p>
+      <b>Release date: </b><%= movie.release_date.strftime("%d/%B/%Y") %>
+    </p>
+    <p>
+      <b>Rating: </b><%= movie.rating %>
+    </p>
+    <div>
+      <%= movie.description.html_safe %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <h3>Trailer</h3>
+</div>
+<div class="row pd-15">
+  <% if movie.trailer_link.blank? %>
+    <strong>Trailer not added yet</strong>
+  <% else %>
+    <div class="embed-responsive embed-responsive-16by9">
+      <%= raw(youtube_embed movie.trailer_link) %>
+    </div>
+  <% end %>
+</div>
+<h2>Reviews</h2>

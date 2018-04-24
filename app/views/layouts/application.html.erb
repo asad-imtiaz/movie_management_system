@@ -8,14 +8,9 @@
 </head>
 <body class="container">
   <%= render 'shared/navbar' %>
-  <div style= "margin-top: 80px">
+  <div id="main-body">
     <% if flash.any? %>
-      <div class="flash_messages">
-        <p class="bg bg-danger"><%= flash[:error] %></p>
-        <p class="bg bg-success"><%= flash[:success] %></p>
-        <p class="notice bg bg-success""><%= notice %></p>
-        <p class="bg bg-danger"><%= alert %></p>
-      </div>
+      <%= render partial: "shared/flash_messages", flash: flash %>
     <% end %>
     <%= yield %>
     <script type="text/javascript">
