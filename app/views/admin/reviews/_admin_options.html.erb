@@ -1,0 +1,8 @@
+<% if review.flagged? %>
+  <%= link_to unflag_admin_movie_review_path(review.movie, review), method: :post, remote: true do %>
+    <span class="glyphicon glyphicon-ok-sign"></span><i>Mark safe</i>
+  <% end %>
+<% end %>
+<%= link_to admin_movie_review_path(review.movie, review), method: :delete, remote: true do %>
+  <span class="glyphicon glyphicon-trash"></span><i>Delete</i>
+<% end %>

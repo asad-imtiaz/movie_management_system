@@ -1,11 +1,7 @@
 module ApplicationHelper
 
-  def profile_picture(user, size = :thumb)
-    user.profile_pic.url(size)
-  end
-
   def link_to_movie_show(movie)
-    return current_user.try(:admin) ? admin_movie_path(movie) : movie_path(movie)
+    return current_user && current_user.admin ? admin_movie_path(movie) : movie_path(movie)
   end
 
   def bootstrap_class_for(flash_type)
@@ -13,9 +9,9 @@ module ApplicationHelper
       when :success
         "alert-success"
       when :error
-        "alert-error"
-      when :alert
         "alert-danger"
+      when :alert
+        "alert-warning"
       when :notice
         "alert-info"
       else

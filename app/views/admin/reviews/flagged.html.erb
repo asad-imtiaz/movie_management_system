@@ -1,0 +1,4 @@
+<%= link_to "Back to movie", admin_movie_path(@movie) %>
+<%= content_tag :h3, @movie.title %>
+<h4>Reported Reviews</h4>
+<%= render partial: '/reviews/review', collection: @reviews, as: :review %>

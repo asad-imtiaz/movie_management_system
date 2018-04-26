@@ -17,6 +17,9 @@
           <li>
             <%= link_to "Movies", admin_movies_path, role: "button" %>
           </li>
+          <li>
+            <%= link_to "Reviews", admin_reviews_path %>
+          </li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -34,6 +37,9 @@
         <% else %>
           <li>
             <%= image_tag profile_picture(current_user), class: "img img-rounded" %>
+          </li>
+          <li>
+            <%= link_to current_user.full_name, "#" %>
           </li>
           <li>
             <%= link_to edit_user_registration_path(current_user), role: "button" do %>

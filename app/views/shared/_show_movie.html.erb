@@ -3,7 +3,7 @@
     <%= image_tag movie.poster.url(:poster), class: "img" %>
   </div>
   <div class="col-md-9">
-    <%= content_tag :h2, movie.title %>
+    <%= content_tag :h2, movie.title, class: "word-wrap" %>
     <p>
       <b>Release date: </b><%= movie.release_date.strftime("%d/%B/%Y") %>
     </p>
@@ -15,7 +15,9 @@
     </div>
   </div>
 </div>
-<h3>Cast</h3>
+<div class="row">
+  <h3>Cast</h3>
+</div>
 <% movie.actors.each do |actor| %>
   <div class="row">
     <%= link_to actor.name, actor_show(actor) %>
@@ -24,7 +26,7 @@
 <div class="row">
   <h3>Trailer</h3>
 </div>
-<div class="row pd-15">
+<div class="row trailer">
   <% if movie.trailer_link.blank? %>
     <strong>Trailer not added yet</strong>
   <% else %>
@@ -34,3 +36,11 @@
   <% end %>
 </div>
 <h2>Reviews</h2>
+<% unless current_user && current_user.admin %>
+  <%= link_to "Write Review", show_form_movie_reviews_path(movie.id), id: "write-review", class: "btn btn-primary", remote: true %>
+  <div id="review-form">
+  </div>
+<% end %>
+<div id="reviews">
+  <%= render partial: '/reviews/review', collection: @reviews, as: :review %>
+</div>

@@ -2,5 +2,6 @@
   <%= link_to "Back to movies", admin_movies_path, class: "btn btn-default" %>
   <%= link_to "Edit Movie Details", edit_admin_movie_path, class: "btn btn-default" %>
   <%= link_to "Remove Poster", remove_poster_admin_movie_path, class: "btn btn-default", method: :post %>
+  <%= link_to "Reported Reviews", flagged_admin_movie_reviews_path(@movie), class: "btn btn-default" %>
 </div>
 <%= render partial: 'shared/show_movie', object: @movie, as: :movie %>

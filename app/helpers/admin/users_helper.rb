@@ -4,4 +4,8 @@ module Admin::UsersHelper
     user.admin? ? "admin" : ""
   end
 
+  def profile_picture(user, size = :thumb)
+    user.profile_pic.url(size)
+  end
+
 end

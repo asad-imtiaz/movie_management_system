@@ -1,0 +1,10 @@
+<% if review.owner?(current_user) %>
+  <%= link_to movie_review_path(review.movie, review), method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-trash">Delete</span>
+  <% end %>
+<% else %>
+  <%= link_to flag_movie_review_path(review.movie, review), method: :post, remote: true do %>
+    <span class="glyphicon glyphicon-flag"></span>
+    <i>Flag as inappropriate</i>
+  <% end %>
+<% end %>

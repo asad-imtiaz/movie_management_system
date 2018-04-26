@@ -23,6 +23,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def show
+    @reviews = @movie.reviews.where(flagged: false)
   end
 
   def edit

@@ -1,0 +1,21 @@
+<div class="row pd-15 mt-15">
+  <h5 class="row col-md-offset-1">
+    <%= link_to review.movie.title, admin_movie_path(review.movie) %>
+  </h5  >
+  <div class="col-md-1">
+    <div class="row">
+      <%= image_tag profile_picture(review.user), class: "img img-rounded" %>
+    </div>
+    <div class="row word-wrap">
+      <%= content_tag :strong, review.user.full_name %>
+    </div>
+  </div>
+  <div class="col-md-10 well well-sm">
+    <%= review.content.html_safe %>
+    <% if current_user && current_user.admin %>
+      <%= render partial: 'admin/reviews/admin_options', object: review, as: :review %>
+    <% else %>
+      <%= render partial: 'reviews/user_options', object: review, as: :review %>
+    <% end %>
+  </div>
+</div>
