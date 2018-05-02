@@ -4,8 +4,8 @@ module Admin::MoviesHelper
     return movie.featured ? "Remove from Featured" : "Add to Featured"
   end
 
-  def release_date(datetime)
-    return datetime.strftime("%d/%B/%Y")
+  def format_date(datetime)
+    return datetime.strftime("%d %B %Y")
   end
 
   def movie_poster(movie, size = :thumb)

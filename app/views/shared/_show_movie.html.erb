@@ -4,8 +4,14 @@
   </div>
   <div class="col-md-9">
     <%= content_tag :h2, movie.title, class: "word-wrap" %>
+    <% if current_user && !is_user_admin? %>
+      <p>
+        <%= content_tag :b, fav_button_text(@movie) %>
+        <%= link_to "", update_favorite_user_path(@movie), class: "#{fav_button_class(@movie)}", method: :post %>
+      </p>
+    <% end %>
     <p>
-      <b>Release date: </b><%= release_date(movie.release_date) %>
+      <b>Release date: </b><%= format_date(movie.release_date) %>
     </p>
     <p>
       <b>Average Rating </b><span class="star-rating" data-score =<%= movie.rating %>></span>

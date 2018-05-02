@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-10">
     <h3><%= link_to movie.title, link_to_movie_show(movie) %></h3>
-    <%= content_tag :p, release_date(movie.release_date) %>
+    <%= content_tag :p, format_date(movie.release_date) %>
     <p>
       <b>Rating: </b><span class="star-rating" data-score=<%= movie.rating %>></span>
     </p>
@@ -12,10 +12,15 @@
       <%= movie.description.html_safe %>
     </div>
     <div>
-      <% if user_signed_in? && current_user.admin? %>
+      <% if is_user_admin? %>
         <%= link_to "Edit", edit_admin_movie_path(movie) %> |
         <%= link_to "Delete", admin_movie_path(movie), method: :delete,
           data: {confirm: "Are you sure?"} %>
+      <% elsif current_user %>
+        <p>
+          <%= content_tag :b, fav_button_text(movie) %>
+          <%= link_to "", update_favorite_user_path(movie), class: "#{fav_button_class(movie)}", method: :post %>
+        </p>
       <% end %>
     </div>
   </div>

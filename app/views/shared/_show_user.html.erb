@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag profile_picture(@user, :medium) %>
+  </div>
+  <div class="col-md-8">
+    <%= content_tag :h3, @user.full_name %>
+    <p>
+      <b>Email: </b><%= @user.email %>
+    </p>
+    <p>
+      <b>Gender: </b><%= @user.gender.humanize %>
+    </p>
+    <p>
+      <b>Date of Birth: </b><%= format_date(@user.date_of_birth) %>
+    </p>
+  </div>
+</div>
+<hr/>
+<% unless @user.admin %>
+  <%= content_tag :h4, "Favorite Movies", class: "row" %>
+  <%= render partial: 'shared/favorite_movie', collection: @favorites, as: :movie %>
+<% end %>

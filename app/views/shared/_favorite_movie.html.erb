@@ -1,0 +1,18 @@
+<div class="row border-bottom">
+  <div class="col-md-9">
+    <h3><%= link_to movie.title, link_to_movie_show(movie) %></h3>
+    <%= content_tag :p, format_date(movie.release_date) %>
+    <p>
+      <b>Rating: </b><span class="star-rating" data-score=<%= movie.rating %>></span>
+    </p>
+    <div>
+      <%= movie.description.html_safe %>
+    </div>
+    <% if current_user == @user %>
+      <p>
+        <%= content_tag :b, fav_button_text(movie) %>
+        <%= link_to "", update_favorite_user_path(movie), class: "#{fav_button_class(movie)}", method: :post %>
+      </p>
+    <% end %>
+  </div>
+</div>

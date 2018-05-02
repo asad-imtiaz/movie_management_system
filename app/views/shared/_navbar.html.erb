@@ -45,7 +45,7 @@
             <%= image_tag profile_picture(current_user), class: "img img-rounded" %>
           </li>
           <li>
-            <%= link_to current_user.full_name, "#" %>
+            <%= link_to current_user.full_name, link_to_user(current_user) %>
           </li>
           <li>
             <%= link_to edit_user_registration_path(current_user), role: "button" do %>

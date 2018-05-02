@@ -7,15 +7,11 @@
       <%= image_tag profile_picture(review.user), class: "img img-rounded" %>
     </div>
     <div class="row word-wrap">
-      <%= content_tag :strong, review.user.full_name %>
+      <%= content_tag :strong, (link_to review.user.full_name, admin_user_path(review.user)) %>
     </div>
   </div>
   <div class="col-md-10 well well-sm">
     <%= review.content.html_safe %>
-    <% if current_user && current_user.admin %>
-      <%= render partial: 'admin/reviews/admin_options', object: review, as: :review %>
-    <% else %>
-      <%= render partial: 'reviews/user_options', object: review, as: :review %>
-    <% end %>
+    <%= render partial: 'admin/reviews/admin_options', object: review, as: :review %>
   </div>
 </div>

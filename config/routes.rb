@@ -38,4 +38,9 @@ Rails.application.routes.draw do
     end
     resources :ratings, only: [:create, :update]
   end
+  resources :users, only: :show do
+    member do
+      post :update_favorite
+    end
+  end
 end

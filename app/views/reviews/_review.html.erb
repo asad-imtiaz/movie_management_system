@@ -4,7 +4,7 @@
       <%= image_tag profile_picture(review.user), class: "img img-rounded" %>
     </div>
     <div class="row word-wrap">
-      <%= content_tag :strong, review.user.full_name %>
+      <%= content_tag :strong, (link_to review.user.full_name, link_to_user(review.user)) %>
     </div>
   </div>
   <div class="col-md-10 well well-sm">
