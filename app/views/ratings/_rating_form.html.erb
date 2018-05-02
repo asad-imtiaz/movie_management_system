@@ -1,0 +1,7 @@
+<%= form_for [@rating.movie, @rating], html:{id: 'rating-form'}, class: "form-inline", remote: true do |f| %>
+  <div class="form-group">
+    <%= f.label :rating, "Your Rating" %>
+    <span data-score=<%= @rating.rating %> id='star-rating'>
+    </span>
+  </div>
+<% end %>

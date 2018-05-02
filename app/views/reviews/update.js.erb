@@ -1,4 +1,8 @@
-$("#review-<%= @review.id %>").replaceWith("<%= j render @review %>");
-$("#review-form").empty();
-$("#write-review").show();
-
+<% if @review.errors.any? %>
+  $("#review-errors").html("<%= j render partial: 'shared/validation_errors', object: @review, as: :object %>");
+<% else %>
+  $("#review-<%= @review.id %>").replaceWith("<%= j render @review %>");
+  $("#review-form").empty();
+  $("#review-errors").empty();
+  $("#write-review").show();
+<% end %>

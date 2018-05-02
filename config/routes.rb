@@ -33,5 +33,6 @@ Rails.application.routes.draw do
         get :show_form
       end
     end
+    resources :ratings, only: [:create, :update]
   end
 end

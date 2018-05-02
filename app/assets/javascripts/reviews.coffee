@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$('#cancel-review').on 'click', ->
-  $('#review-form').empty();
-  $('#write-review').show();
+@cancelButton = () ->
+  $('#cancel-review').on 'click', ->
+    $('#review-form').empty()
+    $('#write-review').show()
+    $("#review-errors").empty()

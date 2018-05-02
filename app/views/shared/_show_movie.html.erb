@@ -8,8 +8,13 @@
       <b>Release date: </b><%= movie.release_date.strftime("%d/%B/%Y") %>
     </p>
     <p>
-      <b>Rating: </b><%= movie.rating %>
+      <b>Average Rating </b><span class="star-rating" data-score =<%= movie.rating %>></span>
     </p>
+    <% if @rating.present? %>
+      <div id="rating-form-area">
+        <%= render 'ratings/rating_form' %>
+      </div>
+    <% end %>
     <div>
       <%= movie.description.html_safe %>
     </div>
@@ -38,9 +43,12 @@
 <h2>Reviews</h2>
 <% unless current_user && current_user.admin %>
   <%= link_to "Write Review", show_form_movie_reviews_path(movie.id), id: "write-review", class: "btn btn-primary", remote: true %>
+  <div id="review-errors">
+  </div>
   <div id="review-form">
   </div>
 <% end %>
+<%= content_tag :h4, "No reviews yet" if @reviews.blank? %>
 <div id="reviews">
   <%= render partial: '/reviews/review', collection: @reviews, as: :review %>
 </div>

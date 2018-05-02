@@ -1,0 +1,5 @@
+$(".star-rating").attr("data-score", "<%= @rating.movie.rating %>");
+initStarRating();
+$("#rating-form-area").replaceWith("<%= j render partial: 'ratings/rating_form', object: @rating %>");
+rate();
+submitRating();

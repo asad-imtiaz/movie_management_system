@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :find_review, only: [:flag, :unflag, :destroy, :update]
+  before_action :find_review, only: [:flag, :destroy, :update]
   before_action :check_review_owner, only: [:destroy, :update]
 
   def create

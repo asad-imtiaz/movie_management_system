@@ -1,3 +1,7 @@
-$("#reviews").append("<%= j render @review %>");
-$("#review-form").empty();
-$("#write-review").show();
+<% if @review.errors.any? %>
+  $("#review-errors").html("<%= j render partial: 'shared/validation_errors', object: @review, as: :object %>");
+<% else %>
+  $("#reviews").append("<%= j render @review %>");
+  $("#review-form").empty();
+  $("#write-review").show();
+<% end %>
