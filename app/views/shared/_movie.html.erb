@@ -4,6 +4,7 @@
   </div>
   <div class="col-md-10">
     <h3><%= link_to movie.title, link_to_movie_show(movie) %></h3>
+    <%= content_tag :p, release_date(movie.release_date) %>
     <p>
       <b>Rating: </b><span class="star-rating" data-score=<%= movie.rating %>></span>
     </p>

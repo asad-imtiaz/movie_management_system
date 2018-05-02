@@ -1,11 +1,15 @@
 class Admin::MoviesController < ApplicationController
 
   before_action :check_user
-  before_action :find_movie , only: [:edit, :edit_poster, :update_poster, :show, :destroy, :update, :remove_poster]
+  before_action :find_movie , only: [:edit, :edit_poster, :update_poster, :show, :destroy, :update, :remove_poster, :set_featured]
   before_action :set_actors, only: [:new, :edit]
 
   def index
     @movies = Movie.all.page(params[:page])
+    @movies = Movie.featured.page(params[:page]) if params[:category] == 'featured'
+    @movies = Movie.top_rated.page(params[:page]) if params[:category] == 'top'
+    @movies = Movie.latest.page(params[:page]) if params[:category] == 'latest'
+    @movies = Movie.upcoming.page(params[:page]) if params[:category] == 'upcoming'
   end
 
   def new
@@ -51,6 +55,23 @@ class Admin::MoviesController < ApplicationController
       flash[:success] = "An error occured, please try again"
     end
       return redirect_to admin_movie_path
+  end
+
+  def set_featured
+    if @movie.featured?
+      if @movie.update(featured: false)
+        flash[:success] = "Movie removed from featured"
+      else
+        flash[:alert] = "Try again"
+      end
+    else
+      if @movie.update(featured: true)
+        flash[:success] = "Movie Added to featured"
+      else
+        flash[:alert] = "Try again"
+      end
+    end
+    redirect_to admin_movie_path(@movie)
   end
 
   private

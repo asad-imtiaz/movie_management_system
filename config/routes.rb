@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'movies#index'
+  root to: 'home#index'
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :movies do
       member do
         post :remove_poster
+        post :set_featured
       end
       resources :reviews, only: :destroy do
         member do
@@ -18,11 +19,13 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :home, only: :index
     resources :reviews, only: :index
     resources :actors
     resources :users , only: [:index, :show]
   end
 
+  resources :home, only: :index
   resources :actors, only: [:index, :show]
   resources :movies, only: [:index, :show] do
     resources :reviews, only: [:create, :update, :destroy] do

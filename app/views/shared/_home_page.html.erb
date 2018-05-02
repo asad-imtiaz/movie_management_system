@@ -1,0 +1,40 @@
+<div class="row">
+  <h2>All Movies <span class="view-all-link"><%= link_to "View all >>", link_to_movies_list %></small></h2>
+</div>
+<div class="row">
+  <% @movies.each do |movie| %>
+    <%= link_to movie_poster(movie, :poster), link_to_movie_show(movie) %>
+  <% end %>
+</div>
+<div class="row">
+  <h2>Featured Movies <span class="view-all-link"><%= link_to "View all >>", link_to_movies_list("featured") %></span></h2>
+</div>
+<div class="row">
+  <% @featured_movies.each do |movie| %>
+    <%= link_to movie_poster(movie, :poster), link_to_movie_show(movie) %>
+  <% end %>
+</div>
+<div class="row">
+  <h2>Top Movies <span class="view-all-link"><%= link_to "View all >>", link_to_movies_list("top") %></span></h2>
+</div>
+<div class="row">
+  <% @top_movies.each do |movie| %>
+    <%= link_to movie_poster(movie, :poster), link_to_movie_show(movie) %>
+  <% end %>
+</div>
+<div class="row">
+  <h2>Latest Movies <span class="view-all-link"><%= link_to "View all >>", link_to_movies_list("latest") %></span></h2>
+</div>
+<div class="row">
+  <% @latest_movies.each do |movie| %>
+    <%= link_to movie_poster(movie, :poster), link_to_movie_show(movie) %>
+  <% end %>
+</div>
+<div class="row">
+  <h2>Upcoming Movies <span class="view-all-link"><%= link_to "View all >>", link_to_movies_list("upcoming") %></span></h2>
+</div>
+<div class="row">
+  <% @upcoming_movies.each do |movie| %>
+    <%= link_to movie_poster(movie, :poster), link_to_movie_show(movie) %>
+  <% end %>
+</div>

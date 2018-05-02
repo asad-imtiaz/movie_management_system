@@ -5,7 +5,7 @@
   <div class="col-md-9">
     <%= content_tag :h2, movie.title, class: "word-wrap" %>
     <p>
-      <b>Release date: </b><%= movie.release_date.strftime("%d/%B/%Y") %>
+      <b>Release date: </b><%= release_date(movie.release_date) %>
     </p>
     <p>
       <b>Average Rating </b><span class="star-rating" data-score =<%= movie.rating %>></span>

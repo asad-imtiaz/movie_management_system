@@ -10,6 +10,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+        <li>
+          <%= link_to "Home", link_to_home %>
+        </li>
         <% if user_signed_in? && current_user.admin? %>
           <li>
             <%= link_to "Actors", admin_actors_path, role: "button" %>
@@ -19,6 +22,9 @@
           </li>
           <li>
             <%= link_to "Reviews", admin_reviews_path %>
+          </li>
+          <li>
+            <%= link_to "Users", admin_users_path %>
           </li>
         <% end %>
       </ul>

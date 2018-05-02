@@ -1,7 +1,11 @@
 module ApplicationHelper
 
   def link_to_movie_show(movie)
-    return current_user && current_user.admin ? admin_movie_path(movie) : movie_path(movie)
+    return is_user_admin? ? admin_movie_path(movie) : movie_path(movie)
+  end
+
+  def link_to_movies_list(param = nil)
+    return is_user_admin? ? admin_movies_path(category: param) : movies_path(category: param)
   end
 
   def bootstrap_class_for(flash_type)
@@ -17,6 +21,10 @@ module ApplicationHelper
       else
         flash_type.to_s
     end
+  end
+
+  def is_user_admin?
+    return current_user && current_user.admin?
   end
 
 end
