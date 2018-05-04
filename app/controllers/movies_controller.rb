@@ -3,11 +3,8 @@ class MoviesController < ApplicationController
   before_action :find_movie, only: :show
 
   def index
-    @movies = Movie.all.page(params[:page])
-    @movies = Movie.featured.page(params[:page]) if params[:category] == 'featured'
-    @movies = Movie.top_rated.page(params[:page]) if params[:category] == 'top'
-    @movies = Movie.latest.page(params[:page]) if params[:category] == 'latest'
-    @movies = Movie.upcoming.page(params[:page]) if params[:category] == 'upcoming'
+    @movies = Movie.advance_search(params)
+    @movies = Movie.search_category(params) if params[:category]
   end
 
   def show

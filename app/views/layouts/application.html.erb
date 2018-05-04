@@ -9,6 +9,9 @@
 <body>
   <div class="container">
     <%= render 'shared/navbar' %>
+    <div class="row container">
+      <%= render 'shared/advanced_search_form' %>
+    </div>
     <div id="main-body">
       <% if flash.any? %>
         <%= render partial: "shared/flash_messages", flash: flash %>

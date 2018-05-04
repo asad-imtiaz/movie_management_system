@@ -5,11 +5,8 @@ class Admin::MoviesController < ApplicationController
   before_action :set_actors, only: [:new, :edit]
 
   def index
-    @movies = Movie.all.page(params[:page])
-    @movies = Movie.featured.page(params[:page]) if params[:category] == 'featured'
-    @movies = Movie.top_rated.page(params[:page]) if params[:category] == 'top'
-    @movies = Movie.latest.page(params[:page]) if params[:category] == 'latest'
-    @movies = Movie.upcoming.page(params[:page]) if params[:category] == 'upcoming'
+    @movies = Movie.advance_search(params)
+    @movies = Movie.search_category(params) if params[:category]
   end
 
   def new
@@ -77,7 +74,7 @@ class Admin::MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :description,:poster, :release_date, :trailer_link, actor_ids: [])
+    params.require(:movie).permit(:title, :description,:poster, :release_date, :genre, :trailer_link, actor_ids: [])
   end
 
   def find_movie

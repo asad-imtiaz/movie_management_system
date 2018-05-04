@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'ckeditor'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'thinking-sphinx'
 
 group :development, :test do
   gem 'byebug'

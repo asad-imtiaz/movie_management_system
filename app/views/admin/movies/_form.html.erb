@@ -24,6 +24,14 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :genre, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.select :genre, Movie::GENRE, promt: "Select a Genre", class: "form-control" %>
+      <span class="help-block">Paste link for the trailer here</span>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :description, class: "control-label col-md-2" %>
     <div class="col-md-10">
       <%= f.cktext_area :description, id: "mov_description" %>

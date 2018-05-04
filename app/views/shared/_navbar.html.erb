@@ -13,12 +13,9 @@
         <li>
           <%= link_to "Home", link_to_home %>
         </li>
-        <% if user_signed_in? && current_user.admin? %>
+        <% if is_user_admin? %>
           <li>
             <%= link_to "Actors", admin_actors_path, role: "button" %>
-          </li>
-          <li>
-            <%= link_to "Movies", admin_movies_path, role: "button" %>
           </li>
           <li>
             <%= link_to "Reviews", admin_reviews_path %>
@@ -27,8 +24,14 @@
             <%= link_to "Users", admin_users_path %>
           </li>
         <% end %>
+        <li>
+          <a href="#" data-toggle="modal" data-target="#search-modal">Advanced Search</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= render 'shared/search_form' %>
+        </li>
         <% unless user_signed_in? %>
           <li>
             <%= link_to new_user_registration_path, role: "button" do %>
@@ -42,10 +45,10 @@
           </li>
         <% else %>
           <li>
-            <%= image_tag profile_picture(current_user), class: "img img-rounded" %>
-          </li>
-          <li>
-            <%= link_to current_user.full_name, link_to_user(current_user) %>
+            <p>
+              <%= image_tag profile_picture(current_user), class: "img img-rounded" %>
+              <%= link_to current_user.full_name, link_to_user(current_user) %>
+            </p>
           </li>
           <li>
             <%= link_to edit_user_registration_path(current_user), role: "button" do %>
