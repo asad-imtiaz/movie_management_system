@@ -35,6 +35,7 @@ class Admin::MoviesController < ApplicationController
       flash[:success] = "Movie updated successfully"
       return redirect_to admin_movie_path @movie
     else
+      byebug
       render 'edit'
     end
   end
