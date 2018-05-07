@@ -29,6 +29,7 @@ class Movie < ActiveRecord::Base
   def self.advance_search(params)
     search_params = {
       conditions: {},
+      include: [:actors, :reviews, :ratings],
       page: params[:page],
       per_page: PER_PAGE,
      }
