@@ -1,7 +1,15 @@
-<%= content_tag :h2, actor.name %>
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <%= image_tag headshot(@actor, :medium) %>
+  </div>
+</div>
+<div class="text-center">
+  <%= content_tag :h3, @actor.name %>
+</div>
+<hr/>
 <h3>Movies</h3>
 <% actor.movies.each do |movie| %>
   <ul>
-    <li><%= movie.title %></li>
+    <li><%= link_to movie.title, link_to_movie_show(movie) %></li>
   </ul>
 <% end %>

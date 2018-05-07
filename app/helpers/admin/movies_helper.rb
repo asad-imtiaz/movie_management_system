@@ -4,6 +4,10 @@ module Admin::MoviesHelper
     return movie.featured ? "Remove from Featured" : "Add to Featured"
   end
 
+  def featured_button_class(movie)
+    return movie.featured ? "btn btn-danger" : "btn btn-success"
+  end
+
   def format_date(datetime)
     return datetime.strftime("%d %B %Y")
   end

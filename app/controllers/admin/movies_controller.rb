@@ -2,7 +2,7 @@ class Admin::MoviesController < ApplicationController
 
   before_action :check_user
   before_action :find_movie , only: [:edit, :edit_poster, :update_poster, :show, :destroy, :update, :remove_poster, :set_featured]
-  before_action :set_actors, only: [:new, :edit]
+  before_action :set_actors, only: [:new, :edit, :update, :create]
 
   def index
     @movies = Movie.advance_search(params)
@@ -35,6 +35,7 @@ class Admin::MoviesController < ApplicationController
       flash[:success] = "Movie updated successfully"
       return redirect_to admin_movie_path @movie
     else
+      byebug
       render 'edit'
     end
   end

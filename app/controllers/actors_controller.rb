@@ -6,7 +6,7 @@ class ActorsController < ApplicationController
   end
 
   def index
-    @actors = Actor.all
+    @actors = Actor.all.page(params[:page])
   end
 
   private

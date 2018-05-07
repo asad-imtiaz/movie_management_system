@@ -2,6 +2,8 @@
 //= require jquery_ujs
 //= require jquery.raty
 //= require bootstrap
+//= require jquery.ui.datepicker
+//= require chosen-jquery
 //= require turbolinks
 //= require ckeditor/init
 //= require_tree .

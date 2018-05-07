@@ -6,16 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="outer-body">
   <div class="container">
     <%= render 'shared/navbar' %>
     <div class="row container">
       <%= render 'shared/advanced_search_form' %>
     </div>
+    <% if flash.any? %>
+      <%= render partial: "shared/flash_messages", flash: flash %>
+    <% end %>
     <div id="main-body">
-      <% if flash.any? %>
-        <%= render partial: "shared/flash_messages", flash: flash %>
-      <% end %>
       <%= yield %>
     </div>
   </div>

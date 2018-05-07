@@ -10,8 +10,11 @@
 
   <div class="form-group">
     <%= f.label :release_date, class: "control-label col-md-2" %>
-    <div class="col-md-4">
-      <%= f.date_select :release_date, class: "form-control" %>
+    <div class="col-md-4 input-group">
+      <%= f.text_field :release_date, value: @movie.release_date.to_date, class: "form-control select-date" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
     </div>
   </div>
 
@@ -26,8 +29,7 @@
   <div class="form-group">
     <%= f.label :genre, class: "control-label col-md-2" %>
     <div class="col-md-4">
-      <%= f.select :genre, Movie::GENRE, promt: "Select a Genre", class: "form-control" %>
-      <span class="help-block">Paste link for the trailer here</span>
+      <%= f.select :genre, Movie::GENRE, {}, class: "form-control" %>
     </div>
   </div>
 
@@ -48,12 +50,11 @@
   <div class="form-group">
     <%= f.label "Select Actors", class: "control-label col-md-2" %>
     <div class="col-md-4">
-      <%= f.collection_select :actor_ids, @actors, :id, :name, {}, multiple: true, class: 'form-control' %>
+      <%= f.collection_select :actor_ids, @actors, :id, :name, {}, multiple: true, class: 'form-control chosen-select' %>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.submit "Submit", class: "btn btn-reverse col-md-offset-2 col-md-1" %>
-  </div>
+  <%= f.submit "Submit", class: "btn btn-success col-md-offset-2" %>
+
 <% end %>
 <%= link_to "Back", admin_movies_path %>
