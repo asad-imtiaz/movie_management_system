@@ -14,7 +14,7 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'ckeditor'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
-gem 'thinking-sphinx'
+# gem 'thinking-sphinx'
 gem 'chosen-rails'
 gem 'jquery-ui-rails', '~> 4.2.1'
 
