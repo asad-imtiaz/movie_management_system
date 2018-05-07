@@ -5,6 +5,7 @@ development:
   database: movie_development
   username: root
   password: square63
+  socket: /var/run/mysqld/mysqld.sock
 
 test:
   adapter: mysql2
@@ -14,8 +15,15 @@ test:
   password: square63
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  database: movie_production
-  username: root
+  adapter: postgresql
+  encoding: unicode
+  database: sample_postgres_production
+  pool: 5
+  username: sample_postgres
   password:
+  database: movie_production
+  # adapter: mysql2
+  # database: movie_production
+  # username: root
+  # password:
+  # encoding: utf8
