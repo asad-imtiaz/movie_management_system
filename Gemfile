@@ -16,6 +16,8 @@ gem 'ckeditor'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'thinking-sphinx'
+gem 'chosen-rails'
+gem 'jquery-ui-rails', '~> 4.2.1'
 
 group :development, :test do
   gem 'byebug'

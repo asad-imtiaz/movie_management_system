@@ -14,6 +14,9 @@
       <b>Release date: </b><%= format_date(movie.release_date) %>
     </p>
     <p>
+      <b>Genre: </b><%= movie.genre %>
+    </p>
+    <p>
       <b>Average Rating </b><span class="star-rating" data-score =<%= movie.rating %>></span>
     </p>
     <% if @rating.present? %>
@@ -30,7 +33,8 @@
   <h3>Cast</h3>
 </div>
 <% movie.actors.each do |actor| %>
-  <div class="row">
+  <div class="row mg-b">
+    <%= image_tag headshot(actor) %>
     <%= link_to actor.name, actor_show(actor) %>
   </div>
 <% end %>

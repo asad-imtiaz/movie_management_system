@@ -1,24 +1,81 @@
 /*
 //= require_tree .
 //= require_self
+//= require chosen
+//= require jquery.ui.datepicker
 */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.error_explanation{
+a, a:hover {
+  color: #333333;
+}
+
+.navbar-brand a {
+  color: white;
+}
+
+.error_explanation {
   color: red;
   font-style: italic;
 }
 
 #main-body {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin: 3% 0;
+  padding: 50px 100px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 40px;
 }
 
-.word-wrap{
+.outer-body {
+  background: url('background.jpg') fixed;
+  background-size: 100% 100%;
+  padding: 60px 50px;
+}
+
+.main-heading {
+  border-bottom: solid thin black;
+}
+
+.heading {
+  margin-top: 15px;
+}
+
+.word-wrap {
   word-wrap: break-word;
 }
 
-nav p a{
+nav p a {
   color: #9d9d9d;
+}
+
+.well {
+  border: none;
+  background-color: rgba(1,1,1,0.0);
+}
+
+.navbar-caret {
+  color: white;
+  font-size: 26px;
+}
+
+.modal {
+  top: 65px;
+}
+
+.red {
+  color: red;
+}
+
+.white {
+  color: white
+}
+
+.green {
+  color: green;
+}
+
+.input-group[class*="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
 }

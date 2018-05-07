@@ -4,7 +4,7 @@ class Admin::ActorsController < ApplicationController
   before_action :find_actor, only: [:edit, :show, :update, :destroy]
 
   def index
-    @actors = Actor.all
+    @actors = Actor.all.page(params[:page]).per(10)
   end
 
   def new
@@ -41,7 +41,7 @@ class Admin::ActorsController < ApplicationController
   private
 
   def actor_params
-    params.require(:actor).permit(:name)
+    params.require(:actor).permit(:name, :headshot)
   end
 
   def find_actor

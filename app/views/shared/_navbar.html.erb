@@ -6,17 +6,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       <% end %>
-      <span class="navbar-brand">Movipedia</span>
+      <span class="navbar-brand"><%= link_to "MoviPedia", link_to_home %></span>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to "Home", link_to_home %>
+          <%= link_to "Movies", link_to_movies_list %>
+        </li>
+        <li>
+          <%= link_to "Actors", link_to_actors %>
         </li>
         <% if is_user_admin? %>
-          <li>
-            <%= link_to "Actors", admin_actors_path, role: "button" %>
-          </li>
           <li>
             <%= link_to "Reviews", admin_reviews_path %>
           </li>
@@ -25,13 +25,10 @@
           </li>
         <% end %>
         <li>
-          <a href="#" data-toggle="modal" data-target="#search-modal">Advanced Search</a>
+          <a href="#" data-toggle="modal" data-target="#search-modal">Advanced Search <i class="glyphicon glyphicon-new-window"></i></a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= render 'shared/search_form' %>
-        </li>
         <% unless user_signed_in? %>
           <li>
             <%= link_to new_user_registration_path, role: "button" do %>
@@ -44,24 +41,28 @@
             <% end %>
           </li>
         <% else %>
-          <li>
-            <p>
-              <%= image_tag profile_picture(current_user), class: "img img-rounded" %>
-              <%= link_to current_user.full_name, link_to_user(current_user) %>
-            </p>
-          </li>
-          <li>
-            <%= link_to edit_user_registration_path(current_user), role: "button" do %>
-              <span class="glyphicon glyphicon-edit"> Edit</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, role: "button", method: :delete do %>
-              <span class="glyphicon glyphicon-log-out"> Logout</span>
-            <% end %>
+          <li class="dropdown">
+              <%= image_tag profile_picture(current_user), class: "img img-circle dropdown-toggle", data: {toggle: "dropdown"} %>
+              <span class="caret navbar-caret"></span>
+            <ul class="dropdown-menu">
+              <li><%= link_to current_user.full_name, link_to_user(current_user) %></li>
+              <li>
+                <%= link_to edit_user_registration_path(current_user), role: "button" do %>
+                  <span class="glyphicon glyphicon-edit"> Edit</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, role: "button", method: :delete do %>
+                  <span class="glyphicon glyphicon-log-out"> Logout</span>
+                <% end %>
+              </li>
+            </ul>
           </li>
         <% end %>
       </ul>
+      <div class="navbar-right">
+        <%= render 'shared/search_form' %>
+      </div>
     </div>
   </div>
 </nav>

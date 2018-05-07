@@ -43,8 +43,11 @@
 
   <div class="form-group">
     <%= f.label :date_of_birth, class: "control-label col-md-2" %>
-    <div class='col-md-4'>
-      <%= f.date_select :date_of_birth, start_year: Date.current.year, end_year: 1950 %>
+    <div class="col-md-4 input-group">
+      <%= f.text_field :date_of_birth, class: "form-control select-date" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
     </div>
   </div>
 
@@ -61,13 +64,13 @@
   <div class="form-group">
     <%= f.label "Profile picture", class: "control-label col-md-2" %>
     <div class="col-md-4">
-      <%= f.file_field :profile_pic, class: "form-control" %>
+      <%= f.file_field :profile_pic %>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.submit "Sign up", class: "btn btn-reverse col-md-offset-2 col-md-1" %>
-  </div>
-<% end %>
+  <%= f.submit "Sign up", class: "btn btn-success col-md-offset-2" %>
 
-<%= render "devise/shared/links" %>
+<% end %>
+<div class="col-md-offset-10 btn btn-default">
+  <%= render "devise/shared/links" %>
+</div>

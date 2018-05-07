@@ -1,0 +1,13 @@
+<%= paginate @actors, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm" %>
+<% @actors.each do |actor| %>
+  <div class="row mg-b">
+    <%= image_tag headshot(actor) %>
+    <%= link_to actor.name, actor_path(actor) %>
+    <% if is_user_admin? %>
+      | <%= link_to "Edit", edit_admin_actor_path(actor) %>
+      | <%= link_to "Delete", admin_actor_path(actor), method: :delete,
+          data: {confirm: "Are you sure?"} %>
+    <% end %>
+  </div>
+<% end %>
+<%= paginate @actors, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm" %>

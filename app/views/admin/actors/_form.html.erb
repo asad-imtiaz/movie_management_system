@@ -1,6 +1,5 @@
 <%= render partial: 'shared/validation_errors', object: @actor, as: :object %>
 <%= form_for [:admin, @actor], html: { class: "form-horizontal" } do |f| %>
-
   <div class="form-group">
     <%= f.label :name, class: "control-label col-md-2" %>
     <div class="col-md-4">
@@ -8,7 +7,11 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.submit "Add", class: "btn btn-reverse col-md-offset-2 col-md-1" %>
+    <%= f.label "Upload Headshot", class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.file_field :headshot %>
+    </div>
   </div>
+  <%= f.submit "Add", class: "btn btn-success col-md-offset-2" %>
 <% end %>
 <%= link_to "Back", admin_actors_path %>

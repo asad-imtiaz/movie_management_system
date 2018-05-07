@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     resources :home, only: :index
     resources :reviews, only: :index
     resources :actors
-    resources :users , only: [:index, :show]
+    resources :users, only: [:index, :show] do
+      member do
+        post :update_admin, as: "update"
+      end
+    end
   end
 
   resources :home, only: :index

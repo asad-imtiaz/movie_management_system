@@ -1,11 +1,11 @@
 module Admin::UsersHelper
 
-  def display_admin user
-    user.admin? ? "admin" : ""
-  end
-
   def profile_picture(user, size = :thumb)
     user.profile_pic.url(size)
+  end
+
+  def admin_text(user)
+    user.admin ? "Remove admin" : "Make admin"
   end
 
 end

@@ -1,3 +1,5 @@
+<h2 class="text-center">All Users</h2>
+<%= paginate @users, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm" %>
 <table class="table">
   <tr>
     <th>Name</th>
@@ -10,9 +12,10 @@
     <tr>
       <td><%= link_to user.full_name, admin_user_path(user) %></td>
       <td><%= user.email %></td>
-      <td><%= user.date_of_birth %></td>
+      <td><%= format_date(user.date_of_birth) %></td>
       <td><%= user.gender.to_s.humanize %></td>
-      <td><%= display_admin(user) %></td>
+      <td><%= link_to admin_text(user), update_admin_user_path(user), method: :post %></td>
     </tr>
   <% end %>
 </table>
+<%= paginate @users, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm" %>
