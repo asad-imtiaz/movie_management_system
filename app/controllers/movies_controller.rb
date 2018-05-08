@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   before_action :find_movie, only: :show
 
   def index
-    @movies = Movie.advance_search(params)
+    @movies = Movie.all
     @movies = Movie.search_category(params) if params[:category]
   end
 

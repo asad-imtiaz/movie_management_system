@@ -5,7 +5,7 @@ class Admin::MoviesController < ApplicationController
   before_action :set_actors, only: [:new, :edit, :update, :create]
 
   def index
-    @movies = Movie.advance_search(params)
+    @movies = Movie.all
     @movies = Movie.search_category(params) if params[:category]
   end
 
