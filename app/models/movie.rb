@@ -21,8 +21,6 @@ class Movie < ActiveRecord::Base
   validates :genre, presence: true, inclusion: { in: GENRE }
   validates_associated :actors
 
-  after_save ThinkingSphinx::RealTime.callback_for(:movie)
-
   def movie_actors
     actors.collect(&:name).join(' ')
   end
