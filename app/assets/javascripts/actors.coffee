@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
-  # enable chosen js
   $('.chosen-select').chosen
     allow_single_deselect: true
     no_results_text: 'No actors found'

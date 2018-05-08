@@ -2,7 +2,7 @@ module Api::V1
   class MoviesController < ApiController
 
     def index
-      movies = Movie.all
+      movies = Movie.advance_search(params)
       respond_to do |format|
         format.json { render json: movies.map { |movie| movie_hash movie } }
       end
