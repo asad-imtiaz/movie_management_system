@@ -1,7 +1,7 @@
 module Admin::MoviesHelper
 
   def featured_button_text(movie)
-    return movie.featured ? "Remove from Featured" : "Add to Featured"
+    return movie.featured ? "Remove Featured" : "Add to Featured"
   end
 
   def featured_button_class(movie)

@@ -21,6 +21,10 @@ class Movie < ActiveRecord::Base
   validates :genre, presence: true, inclusion: { in: GENRE }
   validates_associated :actors
 
+  after_initialize do |movie|
+    movie.release_date = DateTime.now
+  end
+
   def movie_actors
     actors.collect(&:name).join(' ')
   end

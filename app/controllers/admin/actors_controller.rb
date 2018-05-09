@@ -45,7 +45,8 @@ class Admin::ActorsController < ApplicationController
   end
 
   def find_actor
-    @actor = Actor.find(params[:id])
+    @actor = Actor.find_by(id: params[:id])
+    return redirect_to :root, alert: 'Actor not found' if @actor.nil?
   end
 
 end

@@ -20,7 +20,8 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    return redirect_to :root, alert: 'User not found' if @user.nil?
   end
 
   def find_movie

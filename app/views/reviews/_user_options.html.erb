@@ -1,5 +1,5 @@
 <% if review.owner?(current_user) %>
-  <%= link_to movie_review_path(review.movie, review), method: :delete, remote: true do %>
+  <%= link_to movie_review_path(review.movie, review), method: :delete, class: "red", remote: true do %>
     <span class="glyphicon glyphicon-trash">Delete</span>
   <% end %>
 <% else %>

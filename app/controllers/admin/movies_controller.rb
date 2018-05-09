@@ -78,7 +78,8 @@ class Admin::MoviesController < ApplicationController
   end
 
   def find_movie
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_by(id: params[:id])
+    return redirect_to :root, alert: 'Movie not found' if @movie.nil?
   end
 
   def set_actors
