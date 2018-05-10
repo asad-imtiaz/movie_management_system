@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3">
-    <%= image_tag movie.poster.url(:poster), class: "img" %>
+    <%= render partial: 'shared/carousel', object: @movie, as: :movie %>
   </div>
   <div class="col-md-9">
     <%= content_tag :h2, movie.title, class: "word-wrap" %>

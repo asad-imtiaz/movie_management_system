@@ -1,0 +1,11 @@
+<div id="poster-carousel" class="carousel slide">
+  <div class="carousel-inner">
+    <% movie.posters.each_with_index do |movie_poster, index| %>
+      <div class="item <%= 'active' if index.zero? %>">
+        <%= image_tag movie_poster.image.url(:poster), class: "img" %>
+      </div>
+    <% end %>
+  </div>
+  <a class="carousel-control left" href="#poster-carousel" data-slide="prev"></a>
+  <a class="carousel-control right" href="#poster-carousel" data-slide="next"></a>
+</div>
