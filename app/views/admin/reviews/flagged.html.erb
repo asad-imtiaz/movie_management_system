@@ -2,3 +2,4 @@
 <%= content_tag :h3, @movie.title %>
 <h4>Reported Reviews</h4>
 <%= render partial: '/reviews/review', collection: @reviews, as: :review %>
+<%= content_tag :p, "No flagged reviews" if @reviews.empty? %>

@@ -1,3 +1,4 @@
 <%= paginate @movies, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm" %>
 <%= render partial: 'shared/movie', collection: @movies %>
 <%= paginate @movies, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm" %>
+<%= content_tag :h4, "No movies found" if @movies.empty? %>

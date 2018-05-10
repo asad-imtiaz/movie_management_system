@@ -1,2 +1,3 @@
 <h3>Flagged Reviews</h3>
 <%= render partial: 'admin/reviews/flagged_review', collection: @reviews, as: :review%>
+<%= content_tag :p, "No flagged reviews" if @reviews.empty? %>
