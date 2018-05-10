@@ -20,6 +20,8 @@ module Api::V1
         id: movie.id,
         title: movie.title,
         release_date: movie.release_date,
+        description: movie.description,
+        trailer_link: movie.trailer_link,
         genre: movie.genre,
         actors: movie.actors.map{ |actor| {name: actor.name} },
         reviews: movie.reviews.map{ |review| {
