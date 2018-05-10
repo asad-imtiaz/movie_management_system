@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :movies do
       member do
-        post :remove_poster
         post :set_featured
       end
       resources :reviews, only: :destroy do

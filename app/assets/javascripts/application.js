@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery.raty
 //= require bootstrap
+//= require jquery_nested_form
 //= require jquery.ui.datepicker
 //= require chosen-jquery
 //= require turbolinks

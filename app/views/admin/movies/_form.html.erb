@@ -1,5 +1,5 @@
 <%= render partial: 'shared/validation_errors', object: @movie, as: :object %>
-<%= form_for [:admin, @movie], html: { class: "form-horizontal" } do |f| %>
+<%= nested_form_for [:admin, @movie], html: { class: "form-horizontal", multipart: true } do |f| %>
 
   <div class="form-group">
     <%= f.label :title, class: "control-label col-md-2" %>
@@ -40,11 +40,11 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :poster, "Upload Poster", class: "control-label col-md-2" %>
-    <div class="col-md-4">
-      <%= f.file_field :poster, class: "file-input" %>
-    </div>
+  <div class="posters-fields">
+    <%= f.fields_for :posters do |builder| %>
+      <%= render 'admin/movies/poster_field', builder: builder %>
+    <% end %>
+    <%= f.link_to_add "Add poster", :posters %>
   </div>
 
   <div class="form-group">
@@ -57,4 +57,4 @@
   <%= f.submit "Submit", class: "btn btn-success col-md-offset-2" %>
 
 <% end %>
-<%= link_to "Back", admin_movies_path %>
+<%= link_to "Back", back_to_movie_path(@movie) %>

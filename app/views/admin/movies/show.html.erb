@@ -1,7 +1,8 @@
 <div class="mb-15 row">
   <%= link_to "Back to movies", admin_movies_path, class: "btn btn-default col-md-2" %>
   <%= link_to "Edit Movie Details", edit_admin_movie_path, class: "btn btn-default col-md-2" %>
-  <%= link_to "Remove Poster", remove_poster_admin_movie_path, class: "btn btn-default col-md-2", method: :post %>
+  <%= link_to "Delete Movie", admin_movie_path(@movie), class: "btn btn-default col-md-2", method: :delete,
+          data: {confirm: "Are you sure?"} %>
   <%= link_to "Reported Reviews", flagged_admin_movie_reviews_path(@movie), class: "btn btn-default col-md-2" %>
   <%= link_to featured_button_text(@movie), set_featured_admin_movie_path(@movie), class: "#{featured_button_class(@movie)} col-md-offset-2 col-md-2", method: :post %>
 </div>

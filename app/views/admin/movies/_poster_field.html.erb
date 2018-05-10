@@ -1,0 +1,9 @@
+<div class="form-group poster-field">
+  <%= image_tag builder.object.image.url(:thumb), class: "col-md-offset-2" if builder.object.image.present? %>
+  <p>
+    <%= builder.label :image, "Upload Poster", class: "control-label col-md-2" %>
+    <%= builder.file_field :image, class: "file-input" %>
+    <%= builder.hidden_field(:_destroy) %>
+    <%= builder.link_to_remove "Remove this poster" %>
+  </p>
+</div>

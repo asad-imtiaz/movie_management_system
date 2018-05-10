@@ -1,6 +1,6 @@
 <div class="row well movie-well">
   <div class="col-md-2">
-    <%= image_tag movie.poster.url(:thumb), class: "img" %>
+    <%= movie_poster(movie) %>
   </div>
   <div class="col-md-10">
     <h3><%= link_to movie.title, link_to_movie_show(movie) %></h3>

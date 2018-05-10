@@ -44,29 +44,9 @@ class Admin::MoviesController < ApplicationController
     return redirect_to admin_movies_path
   end
 
-  def remove_poster
-    @movie.poster = nil
-    if @movie.save
-      flash[:success] = "Poster removed"
-    else
-      flash[:success] = "An error occured, please try again"
-    end
-      return redirect_to admin_movie_path
-  end
-
   def set_featured
-    if @movie.featured?
-      if @movie.update(featured: false)
-        flash[:success] = "Movie removed from featured"
-      else
-        flash[:alert] = "Try again"
-      end
-    else
-      if @movie.update(featured: true)
-        flash[:success] = "Movie Added to featured"
-      else
-        flash[:alert] = "Try again"
-      end
+    unless @movie.update(featured: !@movie.featured)
+      flash[:alert] = "Try again"
     end
     redirect_to admin_movie_path(@movie)
   end
@@ -74,7 +54,7 @@ class Admin::MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :description,:poster, :release_date, :genre, :trailer_link, actor_ids: [])
+    params.require(:movie).permit(:title, :description, :release_date, :genre, :trailer_link, actor_ids: [], posters_attributes: [:id, :image, :_destroy])
   end
 
   def find_movie

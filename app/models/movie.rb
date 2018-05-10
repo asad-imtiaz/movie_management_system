@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
 
-  GENRE = ["Horror", "Thriller", "Action", "Comedy"]
+  GENRE = ["Horror", "Thriller", "Action", "Comedy", "Drama", "Other"]
   NO_OF_MOVIES_ON_HOME = 5
   PER_PAGE = 5
 
@@ -8,9 +8,9 @@ class Movie < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :reviews, dependent: :destroy
   has_many :ratings, dependent: :destroy
-  has_attached_file :poster,
-                      styles: { poster: "184x274!", thumb: "100x300" },
-                      default_url: ":style/poster_missing.jpg"
+  has_many :posters, dependent: :destroy
+
+  accepts_nested_attributes_for :posters, reject_if: :all_blank, allow_destroy: true
 
   scope :top_rated, -> { order(rating: :desc) }
   scope :latest, -> { where("release_date < ?", DateTime.now).order(release_date: :desc) }
@@ -20,10 +20,7 @@ class Movie < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 50}
   validates :genre, presence: true, inclusion: { in: GENRE }
   validates_associated :actors
-
-  after_initialize do |movie|
-    movie.release_date = DateTime.now
-  end
+  validates :posters, presence: true
 
   def movie_actors
     actors.collect(&:name).join(' ')

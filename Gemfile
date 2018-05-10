@@ -18,11 +18,15 @@ gem 'thinking-sphinx'
 gem 'chosen-rails'
 gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'mysql2' ,'~> 0.3.18'
+gem "nested_form"
 
 group :development, :test do
-  gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :development do
+  gem 'byebug'
 end
 
 group :production do

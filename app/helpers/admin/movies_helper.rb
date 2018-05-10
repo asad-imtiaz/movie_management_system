@@ -13,7 +13,11 @@ module Admin::MoviesHelper
   end
 
   def movie_poster(movie, size = :thumb)
-    return image_tag(movie.poster.url(size))
+    return image_tag(movie.posters.last.image.url(size))
+  end
+
+  def back_to_movie_path(movie)
+    movie.persisted? ? admin_movie_path : admin_movies_path(movie)
   end
 
 end
